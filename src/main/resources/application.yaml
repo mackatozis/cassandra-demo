@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: cassandra-demo
+server:
+  port: 8088
+  shutdown: graceful
+application:
+  cassandra:
+    migration:
+      request-timeout-seconds: 10
+      connection-init-query-timeout-seconds: 10
+      control-connection-timeout-seconds: 10
+cassandra:
+  migration:
+    keyspace-name: test_keyspace
+    strategy: FAIL_ON_DUPLICATES
+    consistency-level: one
+    executionProfileName: slow
+    #script-location: 'cassandra/migration'
+  contact-points: cassandra
+  port: 9042
+  local-datacenter: datacenter1
+  replication:
+    factor: 1
